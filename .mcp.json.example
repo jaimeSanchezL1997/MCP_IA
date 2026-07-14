@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "stadistic-ia": {
+      "command": "uv",
+      "args": ["run", "mcp_server/server.py"],
+      "env": {
+        "ODOO_URL": "http://localhost:8069",
+        "ODOO_DB": "<nombre-bd>",
+        "ODOO_USER": "<login-odoo>",
+        "ODOO_API_KEY": "<api-key>"
+      }
+    }
+  }
+}

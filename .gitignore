@@ -1,0 +1,3 @@
+# credenciales locales (API key) — usar .mcp.json.example como plantilla
+.mcp.json
+__pycache__/
