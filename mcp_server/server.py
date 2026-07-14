@@ -97,5 +97,23 @@ def listar_campos(model: str, buscar: str = "") -> str:
     return _json(fields)
 
 
+@mcp.tool()
+def buscar_id(model: str, nombre: str, limit: int = 10) -> str:
+    """Busca el ID de un registro por nombre (name_search de Odoo).
+
+    Usar SIEMPRE antes de filtrar por producto/cliente/etc. en consultar o
+    agrupar. Filtrar domains por nombre de texto en un campo relacionado
+    (ej. ["product_id.name", "ilike", "X"]) falla o devuelve vacio: hay que
+    resolver el nombre a ID primero con esta tool y despues filtrar por
+    ["product_id", "=", id].
+
+    Args:
+        model: modelo Odoo, ej. 'product.product', 'res.partner'.
+        nombre: texto a buscar, ej. 'Acoustic Bloc Screens'.
+        limit: maximo de resultados (default 10).
+    """
+    return _json(_execute(model, "name_search", [], {"name": nombre, "limit": limit}))
+
+
 if __name__ == "__main__":
     mcp.run()
